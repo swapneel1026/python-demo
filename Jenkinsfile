@@ -5,7 +5,7 @@ pipeline{
             steps{
                 sh '''
                     python3 -m venv venv
-                    . bin/activate
+                    . venv/bin/activate
                 '''
             }
         }
