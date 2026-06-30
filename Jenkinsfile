@@ -16,5 +16,12 @@ pipeline{
                 '''
             }
         }
+        stage('Run Tests'){
+            steps{
+                sh '''
+                 venv/bin/python3 -m pytest --junitxml=report.xml
+                '''
+            }
+        }
     }
 }
