@@ -5,7 +5,6 @@ pipeline{
             steps{
                 sh '''
                     python3 -m venv venv
-                    . venv/bin/activate
                 '''
             }
         }
@@ -22,6 +21,16 @@ pipeline{
                  venv/bin/python3 -m pytest --junitxml=report.xml
                 '''
             }
+        }
+        stage('Publish Test Reports'){
+            steps{
+                junit 'report.xml'
+            }
+        }
+    }
+    post{
+        always{
+            echo 'Pipline Finished'
         }
     }
 }
